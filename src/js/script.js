@@ -13,6 +13,7 @@ import uranusTexture from '../img/uranus.jpg'
 import uranusRingTexture from '../img/uranus ring.png'
 import neptuneTexture from '../img/neptune.jpg'
 import plutoTexture from '../img/pluto.jpg'
+import backgroundImage from '../img/background.jpg'
 
 // renderer
 const renderer = new THREE.WebGLRenderer()
@@ -41,8 +42,8 @@ const ambientLight = new THREE.AmbientLight('#333333')
 scene.add(ambientLight)
 
 // loaders
-const cubeTextureLoader = new THREE.CubeTextureLoader()
 const textureLoader = new THREE.TextureLoader()
+scene.background = textureLoader.load(backgroundImage);
 
 // scene background
 renderer.setClearColor('#111111')
@@ -61,7 +62,7 @@ scene.add(pointLight)
 
 // func that creates planets
 const createPlanet = (size, texture, position, ring) => {
-    const geo = new THREE.SphereGeometry(size, 30, 30)
+    const geo = new THREE.SphereGeometry(size, 35, 35)
     const mat = new THREE.MeshStandardMaterial({
         map: textureLoader.load(texture)
     })
@@ -113,26 +114,26 @@ function animate () {
     //self-rotation
     sun.rotateY(0.004)
 
-    mercury.mesh.rotateY(0.004)
-    venus.mesh.rotateY(0.002)
-    earth.mesh.rotateY(0.02)
-    mars.mesh.rotateY(0.018)
-    jupiter.mesh.rotateY(0.004)
-    saturn.mesh.rotateY(0.038)
-    uranus.mesh.rotateY(0.03)
-    neptune.mesh.rotateY(0.032)
-    pluto.mesh.rotateY(0.008)
+    mercury.mesh.rotateY(0.008);
+    venus.mesh.rotateY(0.004);
+    earth.mesh.rotateY(0.04);
+    mars.mesh.rotateY(0.036);
+    jupiter.mesh.rotateY(0.008);
+    saturn.mesh.rotateY(0.076);
+    uranus.mesh.rotateY(0.06);
+    neptune.mesh.rotateY(0.064);
+    pluto.mesh.rotateY(0.016);
 
     //orbital-rotation
-    mercury.obj.rotateY(0.004)
-    venus.obj.rotateY(0.015)
-    earth.obj.rotateY(0.01)
-    mars.obj.rotateY(0.008)
-    jupiter.obj.rotateY(0.002)
-    saturn.obj.rotateY(0.0009)
-    uranus.obj.rotateY(0.0004)
-    neptune.obj.rotateY(0.0001)
-    pluto.obj.rotateY(0.00007)
+    mercury.obj.rotateY(0.008);
+    venus.obj.rotateY(0.03);
+    earth.obj.rotateY(0.02);
+    mars.obj.rotateY(0.016);
+    jupiter.obj.rotateY(0.004);
+    saturn.obj.rotateY(0.0018);
+    uranus.obj.rotateY(0.0008);
+    neptune.obj.rotateY(0.0002);
+    pluto.obj.rotateY(0.00014);
 
     renderer.render(scene, camera)
 }
